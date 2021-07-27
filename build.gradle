@@ -12,18 +12,38 @@ repositories {
 	mavenCentral()
 }
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	compileOnly 'org.projectlombok:lombok:1.18.20'
-	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+		compileOnly 'org.projectlombok:lombok:1.18.20'
+		annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
-	testCompileOnly 'org.projectlombok:lombok:1.18.20'
-	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+		testCompileOnly 'org.projectlombok:lombok:1.18.20'
+		testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
-}
 
-test {
+		implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		runtimeOnly 'mysql:mysql-connector-java'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+		implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+/*
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.5.3'
+*/
+
+/*
+		// https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+		implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.9'
+*/
+
+	}
+
+
+test{
 	useJUnitPlatform()
 }
