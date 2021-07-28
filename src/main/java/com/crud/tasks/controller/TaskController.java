@@ -42,14 +42,35 @@ public class TaskController {
         );
     }
 
-    @DeleteMapping(value = "deleteTask")
-    public void deleteTask(Long taskId) {
 
+    @DeleteMapping(value = "deleteTask")
+    public TaskDto deleteTask(@RequestParam Long taskId) {
+        TaskDto taskDto;
+        taskDto = (service.getTask(taskId).isPresent() ?
+                taskMapper.mapToTaskDto(service.getTask(taskId).get()) : null);
+
+        if (taskDto != null) {
+            service.deleteTask(taskId);
+            return taskDto;
+        }
+
+        return null;
     }
 
-    @PutMapping(value = "updateTask")
-    public TaskDto updateTask(TaskDto taskDto) {
-        return new TaskDto(1L, "Edited test title", "Test content");
+
+
+    @RequestMapping(
+            value = "updateTask",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            method = RequestMethod.PUT
+    )
+    public TaskDto updateTask(@RequestBody TaskDto taskDto) {
+
+        Task task = taskMapper.mapToTask(taskDto);
+        Task savedTask = service.saveTask(task);
+
+        return taskMapper.mapToTaskDto(savedTask);
+
     }
 
 

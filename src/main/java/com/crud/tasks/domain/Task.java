@@ -14,6 +14,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Getter
 @Entity(name = "tasks")                                    //4me comment: encja. Setter ?
+
 public class Task {
     @Id
     @GeneratedValue
