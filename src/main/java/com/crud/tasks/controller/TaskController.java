@@ -44,17 +44,8 @@ public class TaskController {
 
 
     @DeleteMapping(value = "deleteTask")
-    public TaskDto deleteTask(@RequestParam Long taskId) {
-        TaskDto taskDto;
-        taskDto = (service.getTask(taskId).isPresent() ?
-                taskMapper.mapToTaskDto(service.getTask(taskId).get()) : null);
-
-        if (taskDto != null) {
+    public void deleteTask(@RequestParam Long taskId) {
             service.deleteTask(taskId);
-            return taskDto;
-        }
-
-        return null;
     }
 
 
