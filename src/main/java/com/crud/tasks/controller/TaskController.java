@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/task")
 @RequiredArgsConstructor                                  // 4me comment: - zastępuje konstruktor WRAZ Z adnotacją.
@@ -45,9 +45,8 @@ public class TaskController {
 
     @DeleteMapping(value = "deleteTask")
     public void deleteTask(@RequestParam Long taskId) {
-            service.deleteTask(taskId);
+        service.deleteTask(taskId);
     }
-
 
 
     @RequestMapping(
@@ -68,7 +67,8 @@ public class TaskController {
     @RequestMapping(
             method = RequestMethod.POST,
             value = "createTask",
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
 
     public void createTask(@RequestBody TaskDto taskDto) {
         Task task = taskMapper.mapToTask(taskDto);
