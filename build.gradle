@@ -2,7 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.5.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id  'war'
+	id 'war'
+}
+bootWar {
+	archiveName 'crud.war'
 }
 
 group = 'com.crud'
@@ -30,14 +33,11 @@ repositories {
 		testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
 
 		implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.3'
-/*
 
-//      https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina
-		implementation group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '10.0.8'
-//		https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
-		implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.0.8'
 
-*/
+		// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+		compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
 
 //		provided "org.springframework.boot:spring-boot-starter-tomcat"
 
