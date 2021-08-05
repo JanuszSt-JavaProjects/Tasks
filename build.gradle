@@ -2,11 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id 'war'
+//    id 'war'
 }
-bootWar {
+/*bootWar {
     archiveName 'crud.war'
-}
+}*/
 
 group = 'com.crud'
 version = '0.0.1-SNAPSHOT'
@@ -19,28 +19,31 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
     implementation 'org.springframework.boot:spring-boot-starter-web-services:2.5.3'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
-        testCompileOnly 'org.projectlombok:lombok:1.18.20'
-        testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.3'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.3'
-    runtimeOnly 'mysql:mysql-connector-java:8.0.25'
+
+//    runtimeOnly 'mysql:mysql-connector-java:8.0.25'
+    runtimeOnly 'org.postgresql:postgresql:42.2.23.jre7'
 
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.3'
 
     // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
     // compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.5.3'
+//    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.5.3'
 
-    implementation group: 'org.apache.maven.plugins', name: 'maven-war-plugin', version: '3.3.1'
+//    implementation group: 'org.apache.maven.plugins', name: 'maven-war-plugin', version: '3.3.1'
 }
 
+jar
 
 test {
     useJUnitPlatform()
