@@ -7,7 +7,12 @@ plugins {
 /*bootWar {
     archiveName 'crud.war'
 }*/
-
+/*
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}*/
 group = 'com.crud'
 version = '0.0.1-SNAPSHOT'
 //sourceCompatibility = '16.0.2'
