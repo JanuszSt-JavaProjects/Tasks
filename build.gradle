@@ -39,7 +39,7 @@ dependencies {
 //    runtimeOnly 'org.postgresql:postgresql'
 
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23'
+    implementation group: 'org.postgresql', name: 'postgresql'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.3'
