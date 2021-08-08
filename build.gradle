@@ -22,9 +22,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:'
-    implementation 'org.springframework.boot:spring-boot-starter-web-services:'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services:2.5.3'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
@@ -32,8 +32,8 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.3'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.3'
 /*    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.3'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.3'*/
 
@@ -41,7 +41,7 @@ dependencies {
 //    runtimeOnly 'org.postgresql:postgresql'
 
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
-    implementation group: 'org.postgresql', name: 'postgresql'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23.jre7'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.3'
