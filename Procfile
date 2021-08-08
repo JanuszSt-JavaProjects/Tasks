@@ -1,2 +1,2 @@
-web: java $JAVA_OPTS -jar -Dserver.port=$PORT target/tasks-0.0.1-SNAPSHOT.jar
+web: java $JAVA_TOOL_OPTIONS -jar -Dserver.port=$PORT tasks-0.0.1-SNAPSHOT.jar
 
