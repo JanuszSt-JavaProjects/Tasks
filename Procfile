@@ -1,2 +1,1 @@
-web: java -jar build/libs/tasks-0.0.1-SNAPSHOT.jar -Dserver.port=$PORT
--Dspring.datasource.url
+web: java $JAVA_OPTS -jar -Dserver.port=$PORT target/*.jar
