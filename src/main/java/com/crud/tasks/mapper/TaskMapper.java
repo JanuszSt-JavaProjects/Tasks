@@ -27,7 +27,7 @@ public class TaskMapper {
         );
     }
 
-    public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {       //4me comment:  * pytanie
+    public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {
         return taskList.stream()
                 .map(this::mapToTaskDto)
                 .collect(Collectors.toList());
