@@ -4,39 +4,26 @@ import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-
-//    TrelloBoardDto[] boardsResponse = restTemplate.getForObject(          // wersja z konkatencją
-//            trelloApiEndpoint + "/members/kodillaautor/boards" +          // zmiennych środowiskowych
-//            "?key=" + trelloAppKey +
-//            "&token=" + trelloToken,
-//            TrelloBoardDto[].class
-//    );
-
-
-//    public List<TrelloBoardDto> getTrelloBoards() {
-//        TrelloBoardDto[] boardsResponse = restTemplate.getForObject(
-//                "https://api.trello.com/1/members/kodillaautor/boards",       // wer. z adresem
-//                TrelloBoardDto[].class
-//        );
-//    }
-
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class TrelloClient {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TrelloClient.class);
+
     private final RestTemplate restTemplate;
+
 
     @Value("${trello.api.endpoint.prod}")
     private String trelloApiEndpoint;
@@ -46,7 +33,6 @@ public class TrelloClient {
     private String trelloToken;
     @Value("${trello.app.username}")
     private String trelloUsername;
-
 
 
     public CreatedTrelloCard createNewCard(TrelloCardDto trelloCardDto) {
@@ -81,18 +67,19 @@ public class TrelloClient {
                 .encode()
                 .toUri();
 
-        TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
 
-        return Optional.ofNullable(boardsResponse)
-                .map(Arrays::asList)
-                .orElse(Collections.emptyList());
-
-     /*    //jako Optional:
-        if (boardsResponse != null) {
-                return Arrays.asList(boardsResponse);
-            }
-            return new ArrayList<>();*/
+        try {
+            TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
+            return Optional.ofNullable(boardsResponse)
+                    .map(Arrays::asList)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(p -> Objects.nonNull(p.getId()) && Objects.nonNull(p.getName()))
+                    .filter(p -> p.getName().contains("Kodilla"))
+                    .collect(Collectors.toList());
+        } catch (RestClientException e) {
+            LOGGER.error(e.getMessage(), e);
+            return Collections.emptyList();
+        }
     }
-
-
 }
