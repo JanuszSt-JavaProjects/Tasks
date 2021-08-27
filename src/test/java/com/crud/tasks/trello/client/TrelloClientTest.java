@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -81,5 +82,22 @@ class TrelloClientTest {
         assertEquals("1", newCard.getId());
         assertEquals("test task", newCard.getName());
         assertEquals("http://test.com", newCard.getShortUrl());
+    }
+
+    @Test
+    public void  shouldReturnEmptyList() throws URISyntaxException {
+        // Given
+        when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test/com");
+        when(trelloConfig.getTrelloAppKey()).thenReturn("test");
+        when(trelloConfig.getTrelloToken()).thenReturn("test");
+        when(trelloConfig.getTrelloUser()).thenReturn("test");
+        URI uri = new URI("http://test/com/members/test/boards?key=test&token=test&fields=name,id&lists=all");
+
+        // When
+        when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
+
+        // Then
+        assertEquals(Collections.emptyList(),trelloClient.getTrelloBoards());
+
     }
 }
