@@ -24,21 +24,26 @@ repositories {
 dependencies {
 
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.4'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
 
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.4'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.25'
 
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
-    implementation 'org.springframework.boot:spring-boot-starter-web-services:2.5.3'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services:2.5.4'
 
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+// SWAGGER
+
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:2.10.2' // nie upgrade-ować.
 
 // HEROKU:
 
