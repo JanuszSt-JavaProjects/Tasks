@@ -42,8 +42,8 @@ dependencies {
 
 // HEROKU:
 
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23.jre7'
-    implementation 'org.postgresql:postgresql:42.2.23'
+//    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23.jre7'
+//    implementation 'org.postgresql:postgresql:42.2.23'
 
 
 //    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.5.3'
