@@ -13,7 +13,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/task")
-@RequiredArgsConstructor                                  // 4me comment: - zastępuje konstruktor WRAZ Z adnotacją.
+@RequiredArgsConstructor
 public class TaskController {
 
     private final DbService service;
