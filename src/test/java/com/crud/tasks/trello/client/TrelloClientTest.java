@@ -85,7 +85,7 @@ class TrelloClientTest {
     }
 
     @Test
-    public void  shouldReturnEmptyList() throws URISyntaxException {
+    public void shouldReturnEmptyList() throws URISyntaxException {
         // Given
         when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test/com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
@@ -97,7 +97,7 @@ class TrelloClientTest {
         when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
 
         // Then
-        assertEquals(Collections.emptyList(),trelloClient.getTrelloBoards());
+        assertEquals(Collections.emptyList(), trelloClient.getTrelloBoards());
 
     }
 }

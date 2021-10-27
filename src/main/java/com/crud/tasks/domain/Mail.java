@@ -2,7 +2,7 @@ package com.crud.tasks.domain;
 
 import lombok.*;
 
-//@Builder
+@Builder
 @Getter
 @AllArgsConstructor
 @RequiredArgsConstructor
