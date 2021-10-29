@@ -41,6 +41,9 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
+    testImplementation 'com.google.code.gson:gson'
+
+
 // SWAGGER
 
     implementation 'io.springfox:springfox-swagger2:3.0.0'
