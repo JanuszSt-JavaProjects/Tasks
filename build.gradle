@@ -44,14 +44,13 @@ dependencies {
 
     testImplementation 'com.google.code.gson:gson'
 
-
+//    Thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 // SWAGGER
-
     implementation 'io.springfox:springfox-swagger2:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:2.10.2' // nie upgrade-ować.
 
 // HEROKU:
-
 //    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.23.jre7'
 //    implementation 'org.postgresql:postgresql:42.2.23'
 
