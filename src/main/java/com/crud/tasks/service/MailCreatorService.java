@@ -8,16 +8,18 @@ import org.thymeleaf.context.Context;
 
 
 @Service
-    public class MailCreatorService {
+public class MailCreatorService {
 
-        @Autowired
-        @Qualifier("templateEngine")
-        private TemplateEngine templateEngine;
+    @Autowired
+    @Qualifier("templateEngine")
+    private TemplateEngine templateEngine;
 
-        public String buildTrelloCardEmail(String message) {
-            Context context = new Context();
-            context.setVariable("message", message);
-            return templateEngine.process("mail/created-trello-card-mail", context);
-        }
-
+    public String buildTrelloCardEmail(String message) {
+        Context context = new Context();
+        context.setVariable("message", message);
+        context.setVariable("tasks_url", "https://januszst-javaprojects.github.io/");
+        context.setVariable("button", "Visit website");
+        return templateEngine.process("mail/created-trello-card-mail", context);
     }
+
+}

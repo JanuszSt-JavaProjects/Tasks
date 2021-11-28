@@ -11,8 +11,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -21,6 +19,7 @@ public class SimpleEmailService {
     @Autowired
     private MailCreatorService mailCreatorService;
 
+    @Autowired
     private final JavaMailSender javaMailSender;
 
     public void send(final Mail mail) {
@@ -42,7 +41,6 @@ public class SimpleEmailService {
             messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
         };
     }
-
 
     private SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
