@@ -37,7 +37,7 @@ public class SimpleEmailService {
         }
     }
 
-    private MimeMessagePreparator createMimeMessage(final Mail mail, TrelloAction actionChooser) {
+     MimeMessagePreparator createMimeMessage(final Mail mail, TrelloAction actionChooser) {
         return mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
