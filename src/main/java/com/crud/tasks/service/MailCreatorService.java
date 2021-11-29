@@ -51,4 +51,24 @@ public class MailCreatorService {
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 
+
+    public String buildTrelloTasksEmail(String message) {
+
+        Context context = new Context();
+        context.setVariable("message", message);
+
+        context.setVariable("admin_name", adminConfig.getAdminName());
+        context.setVariable("GOODBYE_MESSAGE", "Have a nice day!");
+        context.setVariable("COMPANY_NAME", companyData.getCompanyName());
+        context.setVariable("COMPANY_EMAIL", companyData.getCompanyEmail());
+        context.setVariable("COMPANY_PHONE", companyData.getCompanyPhone());
+
+
+        context.setVariable("is_friend", true);
+        context.setVariable("admin_config", adminConfig.getAdminName());
+
+        return templateEngine.process("mail/daily-tasks-mail", context);
+    }
+
+
 }

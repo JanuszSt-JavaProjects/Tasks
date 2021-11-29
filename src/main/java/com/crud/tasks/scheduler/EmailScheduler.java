@@ -4,6 +4,7 @@ import com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.domain.Mail;
 import com.crud.tasks.repository.TaskRepository;
 import com.crud.tasks.service.SimpleEmailService;
+import com.crud.tasks.service.TrelloAction;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -19,8 +20,25 @@ public class EmailScheduler {
     private static final String SUBJECT = "Tasks: Once a day email";
 
 
+    @Scheduled(cron = "0 0 10 * * *")
+//    @Scheduled(fixedDelay = 90000)
+    public void sendInformationEmail() {
+        long size = taskRepository.count();
+        String taskMessage = (size == 1) ? "task" : "tasks";
+        simpleEmailService.send(
+                new Mail(
+                        adminConfig.getAdminMail(),
+                        SUBJECT,
+                        "Currently in database you got: " + size + " " + taskMessage,
+                        null
+                ), TrelloAction.CREATE_TASK);
+
+    }
+
+
+    /*  //Previous
     //@Scheduled(cron = "0 0 10 * * *")
-//    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
         String taskMessage = (size == 1) ? "task" : "tasks";
@@ -32,6 +50,6 @@ public class EmailScheduler {
                         null
                 )
         );
-    }
+    }*/
 
 }
