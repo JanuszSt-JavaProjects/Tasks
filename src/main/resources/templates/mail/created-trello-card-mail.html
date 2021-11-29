@@ -115,20 +115,28 @@
                                    style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                                 <tr>
                                     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
-<!--                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">-->
-<!--                                            WELCOME_MESSAGE</p>-->
-                                        <p style="font-family: sans-serif;
+                                        <!--                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">-->
+                                        <!--                                            WELCOME_MESSAGE</p>-->
+                                        <p th:if="${is_friend}" style="font-family: sans-serif;
                                             font-size: 14px;
                                             font-weight: normal;
                                             margin: 0;
                                             Margin-bottom: 15px;"
-                                            > Dear <span th:text="${admin_name}"></span>,
+                                        > Yo <span th:text="${admin_name}"></span>,
+                                        </p>
+                                        <p th:unless="${is_friend}" style="font-family: sans-serif;
+                                            font-size: 14px;
+                                            font-weight: normal;
+                                            margin: 0;
+                                            Margin-bottom: 15px;"
+                                        > Dear <span th:text="${admin_name}"></span>,
                                         </p>
 
                                         <!--<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">MESSAGE_CONTENT</p>-->
                                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"
                                            th:text="${message}"></p>
-                                        <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary"
+                                        <table th:if="${show_button}" border="0" cellpadding="0" cellspacing="0"
+                                               class="btn btn-primary"
                                                style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                                             <tbody>
                                             <tr>
@@ -172,6 +180,12 @@
                                         font-weight: normal;
                                         margin: 0;
                                         Margin-bottom: 15px;">
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                                            Application functionality:
+                                        </p>
+                                        <ul th:each="function : ${application_functionality}">
+                                            <li th:text="${function}"></li>
+                                        </ul>
                                             <span th:text="${GOODBYE_MESSAGE}"></span>
                                         </p>
                                     </td>
@@ -191,7 +205,8 @@
                             <td class="content-block"
                                 style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
                                 <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;"
-                                ><div th:text="${COMPANY_NAME}"> </div> <div th:text=" 'e-mail:  ' +${COMPANY_EMAIL} + ',  phone: ' +${COMPANY_PHONE}" > </div> </span>
+                                ><div th:text="${COMPANY_NAME}"> </div> <div
+                                        th:text=" 'e-mail:  ' +${COMPANY_EMAIL} + ',  phone: ' +${COMPANY_PHONE}"> </div> </span>
                             </td>
                         </tr>
                     </table>
